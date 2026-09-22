@@ -954,9 +954,13 @@ footer {
           <div class="exp-role">Software Development Engineer I</div>
           <div class="exp-company">Meesho</div>
           <ul class="exp-bullets">
-            <li>Built a dynamic rule engine using MVEL to execute analytical fraud prevention rules for orders and returns, integrating multiple services via runtime wrappers.</li>
-            <li>Migrated a legacy Python service to Java Spring Boot — added Prometheus metrics and structured logs, reducing latency by 30%.</li>
-            <li>Conducted continuous infrastructure monitoring and root cause analysis to identify and resolve production issues, improving system stability.</li>
+         
+            <li>Developed a Dynamic rule engine to execute analytical rules (using MVEL) for fraud prevention in order and returns. Integrated multiple services and data sources via runtime wrappers for efficient rule evaluation.</li>
+            <li>Migrated multiple legacy Python-based service to Java Spring Boot, added structured debugging logs and Prometheus-based metrics, enhancing fault tolerance and reducing latency.</li>
+            <li>worked on reducing RTO(return to origin) frauds and blocked orders at cart level which was going to get blocked in later phases of order processing like user-supplier interaction history check, high rto history checks,  past delivery fraud checks(wrong product getting returned by user instead of original product) and high rto rate users. Which helped platform to reduce the drag and unnecessary resource burn for orders which was getting cancelled in intermittent stages with in the system.</li>
+            <li>implimented COD blocking and forced pre-payment for low intent high RTO user which improved over all delivered product acceptance and achieved reduction in over all RTO rate for such user cohorts (idea: highly unlikely that user will not accept a prepaid order on delivery unlike cod where user can reject the order because user haven't paid yet and they got nothing to lose)</li>
+            <li>Performing continuous infrastructure monitoring and conducting root cause analysis to identify and resolve production issues, improving system stability.</li>
+          
           </ul>
           <div class="exp-tags">
             <span class="tag">Java</span>
@@ -978,10 +982,13 @@ footer {
           <div class="exp-role">Full Stack Developer</div>
           <div class="exp-company">RAAPID INC</div>
           <ul class="exp-bullets">
-            <li>Redesigned database structure to industry standards, implemented an archival system to move 150+ day-old data with 100% uptime.</li>
-            <li>Replaced Python-based report workflows with efficient SQL solutions, reducing generation time by 60% and minimizing logical errors.</li>
-            <li>Managed Azure data pipelines and optimized query performance by 25% through indexing, locking, and server parameter tuning.</li>
-          </ul>
+            <li> Redesigned Entire Production Database structure to align with FHIR-compliant industry standards. Improving existing Events and Procedures.</li>
+            <li> Build archival machanism for moving older data from active tables to cold storage to improve query performance and lower the cost associated with database.</li>
+            <li> Streamlined report generation by replacing Python-based workflows with efficient SQL solutions, reducing complexity, enhancing communication, cutting review time, improving accuracy, and minimizing logical errors.</li>
+            <li> Worked on Azure data pipelines, automated data insertion tasks, and optimizing query performance through indexing, locking, and server parameter adjustments.
+            <li> Optimized SQL Performance - Implemented table partitioning and preprocessed raw data to significantly enhance query execution time and database efficiency.</li>
+            <li> LLM-Powered SQL Generation - Developed LLM agents using Phidata with a structured knowledge base of the product database, enabling automatic generation of complex SQL queries through intelligent prompting.</li>
+            <li> LLM-Driven Code & Test Analysis - Built a multi-agent LLM system for repository analysis, empowering users to navigate complex codebases without prior knowledge. The system also automated test case generation for new features, accelerating the QA process.</li>
           <div class="exp-tags">
             <span class="tag">SQL</span>
             <span class="tag">Azure Data Factory</span>
