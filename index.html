@@ -1030,8 +1030,11 @@ footer {
           <div class="exp-role">SDE Intern — DPDK R&D</div>
           <div class="exp-company">Truminds Software Systems</div>
           <ul class="exp-bullets">
-            <li>Developed efficient C code for high-performance packet processing in DPDK, focusing on GTP packet identification, decapsulation, and advanced filtering.</li>
-            <li>Implemented optimized interrupt handling in DPDK to reduce latency and enhance packet processing performance for Napatech hardware.</li>
+            <li> Developed efficient C code for high-performance packet processing in DPDK, focusing on GTP packet identification, decapsulation, and advanced filtering (port&IP).</li>
+            <li> Implemented optimized interrupt handling in DPDK to reduce latency and enhance packet processing and filtering.</li>
+            <li> Leveraged low-level C programming and hardware acceleration in DPDK for significant performance improvements in packet manipulation.</li>
+            <li> Demonstrated around 3-4x speedup in raw packet processing over traditional stack utilising higher network bandwidth and overcoming the bottle necks of packet processing of osi model by moving the data link, network & transport layer from kernal to user space eliminating all the context switching of user and kernal space, hardware interrupts & copying of packets from kernal memory to user memory.</li>
+            <li> Effectively moved entire packet processing from kernal to user space. directly accessing packets from nics and writing directly to user-space memory without involving cpu  in copy process(zero copy process).</li>
           </ul>
           <div class="exp-tags">
             <span class="tag">C</span>
@@ -1061,7 +1064,7 @@ footer {
         <div class="project-icon">🔭</div>
         <div class="project-label hackathon">Hackathon Winner · Meesho Hackme3</div>
         <div class="project-name">Observability Platform</div>
-        <div class="project-desc">Cost-efficient, full-stack observability system for microservices — logs, metrics, AI-powered anomaly detection and RCA.</div>
+        <div class="project-desc">Automated triage for broken microservices—because nobody wants to read thousands of raw log lines during an outage</div>
         <ul class="project-bullets">
           <li>Built with Java, Python, gRPC, and VictoriaMetrics to collect, store, and query logs/metrics across microservices</li>
           <li>Reduced detection time by 80–90% and achieved 85%+ accuracy across services</li>
@@ -1083,6 +1086,24 @@ footer {
         <div class="project-desc">Custom GPT-3.5-turbo powered smart contract auditor with a knowledge base of 5,000+ Solidity contracts for precise, context-aware bug detection.</div>
         <div class="project-links">
           <a href="https://github.com/Rajneesh100/BTP_Dynamic-analysis-of-smart-contracts" class="project-link" target="_blank">⌥ GitHub</a>
+        </div>
+      </div>
+
+      <div class="project-card featured fade-in">
+        <div class="project-icon">🧮</div>
+        <div class="project-label hackathon">Self</div>
+        <div class="project-name">Alexa-nxt</div>
+        <div class="project-desc">A multimodal smart assistant with real memory, eyesight, and zero robotic "Sorry, I didn't get that."</div>
+        <ul class="project-bullets">
+            <li>Concurrent by design: Built in Go using lightweight goroutines to ingest real-time audio streams, trigger computer vision, and execute tools without UI thread lockup.</li>
+            <li>Hybrid Edge/Cloud brain: Dynamic model routing that runs local weights for zero-latency instant commands, deferring to cloud LLMs only for heavy-duty reasoning.</li>
+            <li>Full tool execution: Native integrations for streaming media playback, camera feeds, and automated workflow triggers (email, system tasks).</li>
+        </ul>
+        <div class="exp-tags">
+          <span class="tag">Computer Vision(YOLO)</span><span class="tag">Multimodal Ai</span><span class="tag">STT</span><span class="tag">TTS</span><span class="tag">Go</span><span class="tag">Python</span> 
+        </div>
+        <div class="project-links">
+          <a href="https://github.com/Rajneesh100/Alexa-nxt" class="project-link" target="_blank">⌥ GitHub</a>
         </div>
       </div>
 
