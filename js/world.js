@@ -18,9 +18,9 @@ const World = (function () {
   const swarm = (() => {
     const N = 6, drones = [], bubbles = [];
     let targets = [], intercepted = 0, spawnIn = 300;
-    const self = { fade: 'rgba(10,10,15,0.3)', color: '#06b6d4' };
+    const self = { color: '#06b6d4' };
     const pad = i => ({ x: 26 + i * 22, y: H - 28 });
-    const dock = (d, cool) => { const p = pad(d.i); Object.assign(d, { x: p.x, y: p.y, vx: 0, vy: 0, cool, goal: null }); };
+    const dock = (d, cool) => { const p = pad(d.i); Object.assign(d, { x: p.x, y: p.y, vx: 0, vy: 0, cool, goal: null, trail: [] }); };
     for (let i = 0; i < N; i++) drones.push({ i, cool: 300 + i * 250 });
     self.resize = () => drones.forEach(d => { if (!d.goal) dock(d, d.cool || 0); });
     self.step = (k, dt) => {
@@ -53,6 +53,9 @@ const World = (function () {
         d.vx += ((tx / tl) * sp - d.vx) * 0.07 * k;
         d.vy += ((ty / tl) * sp - d.vy) * 0.07 * k;
         d.x += d.vx * k; d.y += d.vy * k;
+        d.trail = d.trail || [];
+        const lt = d.trail[0];
+        if (!lt || Math.hypot(d.x - lt.x, d.y - lt.y) > 5) { d.trail.unshift({ x: d.x, y: d.y }); if (d.trail.length > 8) d.trail.pop(); }
         if (!g && dist < 6) { dock(d, 0); return; }
         if (g && dist < 14) {
           bubbles.push({ x: g.x, y: g.y, r: 4, a: 1 });
@@ -71,6 +74,10 @@ const World = (function () {
         ctx.beginPath(); ctx.arc(o.x, o.y, 14, 0, 7); ctx.stroke(); ctx.setLineDash([]);
       });
       drones.forEach(d => {
+        const tr = d.trail || [];
+        for (let n = 1; n < tr.length; n++) { ctx.strokeStyle = `rgba(6,182,212,${0.35 * (1 - n / tr.length)})`; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(tr[n - 1].x, tr[n - 1].y); ctx.lineTo(tr[n].x, tr[n].y); ctx.stroke(); }
+      });
+      drones.forEach(d => {
         const docked = d.cool > 0 || (!d.goal && Math.hypot(d.vx, d.vy) < 0.2);
         ctx.save(); ctx.translate(d.x, d.y); ctx.rotate(docked ? -Math.PI / 2 : Math.atan2(d.vy, d.vx));
         ctx.fillStyle = docked ? '#34445a' : '#06b6d4';
@@ -85,7 +92,7 @@ const World = (function () {
 
   // Kinetic: air flows around the reading column like a wing in the wind tunnel
   const flow = (() => {
-    const self = { fade: 'rgba(10,10,15,0.14)', color: '#ff8a5b' };
+    const self = { color: '#ff8a5b' };
     let P = [], cx = 0, cy = 0, a = 1, b = 1;
     const U = 2.4;
     const inside = (x, y) => ((x - cx) / a) ** 2 + ((y - cy) / b) ** 2 < 1.02;
@@ -105,7 +112,7 @@ const World = (function () {
         const u = U * (1 - (X * X - Y * Y) / r4);
         let v = -U * (b / a) * (2 * X * Y) / r4;
         if (X > 0.5) v += Math.sin(t * 0.004 + p.y * 0.035) * 0.5 * Math.exp(-Y * Y * 1.5) * Math.min(1, X - 0.5);
-        p.px = p.x; p.py = p.y; p.sp = Math.hypot(u, v) / U;
+        p.u = u; p.v = v; p.sp = Math.hypot(u, v) / U;
         p.x += u * k; p.y += v * k; p.life -= k;
         if (p.x > W + 20 || p.y < top - 20 || p.y > H + 20 || p.life < 0 || inside(p.x, p.y)) spawn(p, false);
       });
@@ -115,7 +122,7 @@ const World = (function () {
       P.forEach(p => {
         const s = Math.min(1, Math.max(0, (p.sp - 0.6) / 1.1));
         ctx.strokeStyle = `hsla(${190 - s * 165}, 90%, 60%, ${0.35 + s * 0.45})`;
-        ctx.beginPath(); ctx.moveTo(p.px, p.py); ctx.lineTo(p.x, p.y); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(p.x - (p.u || 0) * 9, p.y - (p.v || 0) * 9); ctx.lineTo(p.x, p.y); ctx.stroke();
       });
     };
     self.label = () => `<b>Kinetic</b> · wind tunnel, air flowing around this page`;
@@ -124,7 +131,7 @@ const World = (function () {
 
   // Rocket Rally: six cars lapping the screen edge, firing at whoever is ahead
   const race = (() => {
-    const self = { fade: 'rgba(10,10,15,0.32)', color: '#ff4d5e' };
+    const self = { color: '#ff4d5e' };
     const colors = ['#ff4d5e', '#f59e0b', '#00ff88', '#06b6d4', '#a78bfa', '#e2e8f0'];
     const STEP = 4;
     let pts = [], L = 1, takedowns = 0;
@@ -213,7 +220,7 @@ const World = (function () {
 
   // Alexa-nxt: voice waves across the screen; it wakes, talks, and goes back to listening
   const voice = (() => {
-    const self = { fade: 'rgba(10,10,15,0.35)', color: '#00ff88' };
+    const self = { color: '#00ff88', fade: 0.35 };   // the voice waves keep a soft glow trail
     const lines = ['hey angela', 'play something lo-fi', 'skip, that wasn’t for me', 'what was I stuck on yesterday?', 'memory_search', 'a goroutine leak', 'vision · person, laptop', 'sleeping while music plays'];
     let amp = 0.1, goal = 0.1, phaseT = 800, speaking = false, words = [], ripples = [], li = 0;
     self.resize = () => {};
@@ -255,7 +262,7 @@ const World = (function () {
 
   // Durable Chat: every room is its own tiny server; messages go up to it and fan out to the others
   const chat = (() => {
-    const self = { fade: 'rgba(10,10,15,0.3)', color: '#f59e0b' };
+    const self = { color: '#f59e0b' };
     const names = ['#general', '#random', '#builds', '#robots', '#music', '#deploys', '#infra', '#late-night'];
     let rooms = [], packets = [], msgs = 0, sendIn = 400;
     self.resize = () => {
@@ -313,7 +320,7 @@ const World = (function () {
 
   // Next-Frame: the A* teacher car exploring a grid; it only sees a small box around itself
   const grid = (() => {
-    const self = { fade: null, color: '#38bdf8' };
+    const self = { color: '#38bdf8' };
     const C = 22, FOV = 3, TICK = 85;
     let cols = 0, rows = 0, wall, known, car = { x: 0, y: 0 }, from = { x: 0, y: 0 }, goal = null, path = [], goals = 0, moveT = 0, pops = [];
     const idx = (x, y) => y * cols + x;
@@ -440,7 +447,9 @@ const World = (function () {
     if (!running()) { last = 0; return; }
     const dt = last ? Math.min(now - last, 50) : 16.67; last = now; t += dt;
     const k = dt / 16.67;
-    if (cur.fade) { ctx.fillStyle = cur.fade; ctx.fillRect(0, 0, W, H); } else clear();
+    // most scenes clear fully each frame (crisp at any frame rate); a scene with `fade` keeps a glow trail,
+    // and the fade is scaled by elapsed time so the trail is the same length at 30, 60 or 120 fps
+    if (cur.fade) { ctx.fillStyle = `rgba(10,10,15,${1 - Math.pow(1 - cur.fade, k)})`; ctx.fillRect(0, 0, W, H); } else clear();
     cur.step(k, dt); cur.draw();
     raf = requestAnimationFrame(frame);
   }
