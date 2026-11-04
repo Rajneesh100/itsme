@@ -45,6 +45,7 @@
 <!-- HERO -->
 <section id="hero">
   <div class="hero-inner">
+    <div class="hero-main">
     <div class="hero-tag">
       <span class="dot"></span>
       Available for opportunities
@@ -82,6 +83,34 @@
         <span class="stat-label">Side projects in 2026</span>
       </div>
     </div>
+    </div>
+
+    <div class="hero-term" aria-label="What I'm working on next">
+      <div class="term-bar">
+        <span class="t-dot red"></span><span class="t-dot yellow"></span><span class="t-dot green"></span>
+        <span class="term-title">rajneesh@workbench ~ zsh</span>
+      </div>
+      <div class="term-body" id="term">
+        <div class="t-row"><span class="t-prompt">❯</span> <span class="t-cmd">cat ~/now.md</span></div>
+        <p class="t-out">Giving old smartphones a second life as robot brains. The phone sees with its own camera and chip, and an ESP32 handles the motors and sensors.</p>
+
+        <div class="t-row"><span class="t-prompt">❯</span> <span class="t-cmd">git branch --list 'next/*'</span></div>
+        <div class="t-out t-branches">
+          <div class="t-branch"><span class="t-star">*</span> <span class="t-name">next/phone-brain</span> <span class="t-status live"><i></i>in progress</span></div>
+          <div class="t-branch"><span class="t-star"> </span> <span class="t-name dim">next/rally-irl</span> <span class="t-status">queued</span></div>
+          <div class="t-note"># Rocket Rally's neural net driving real hardware, with a phone as the brain</div>
+        </div>
+
+        <div class="t-row"><span class="t-prompt">❯</span> <span class="t-cmd">cat ~/stuck.txt</span></div>
+        <p class="t-out">Getting open-source Android onto non-Qualcomm phones, so I get root and can run neural nets on bare metal.</p>
+
+        <div class="t-row"><span class="t-prompt">❯</span> <span class="t-cmd">echo $OPEN_TO</span></div>
+        <p class="t-out t-str">"Ideas that are easy to think of and hard to build, with real tech, real users and conversations across companies."</p>
+
+        <div class="t-row t-last"><span class="t-prompt">❯</span> <span class="t-cursor"></span></div>
+      </div>
+    </div>
+
     <div class="pets">
       <canvas id="pets" aria-label="My side projects as tiny animated pets. Click one to jump to it."></canvas>
       <div class="pets-note">// my side projects, living down here. click one</div>
@@ -858,6 +887,7 @@
 <script src="js/core.js" defer></script>
 <script src="js/world.js" defer></script>
 <script src="js/pets.js" defer></script>
+<script src="js/terminal.js" defer></script>
 <script src="js/experience.js" defer></script>
 <script src="js/lab.js" defer></script>
 <script src="js/demos.js" defer></script>
