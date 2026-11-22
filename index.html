@@ -4,18 +4,19 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Rajneesh Kumar</title>
-<meta name="description" content="Rajneesh Kumar, Founding Engineer at DAITA. Builds 0→1 products at work and side projects in robotics, simulation and reinforcement learning."/>
+<meta name="description" content="Rajneesh Kumar, engineer at Myrik and former founding engineer at DAITA. Builds 0→1 products at work and side projects in robotics, simulation and reinforcement learning."/>
 <meta property="og:title" content="Rajneesh Kumar, Engineer"/>
-<meta property="og:description" content="Founding Engineer at DAITA, with side projects in drone interception, physics simulation and self-taught race cars."/>
+<meta property="og:description" content="Engineer at Myrik, building its 0→1 ads platform, with side projects in drone interception, physics simulation and self-taught race cars."/>
 <meta property="og:image" content="https://rajneesh100.github.io/itsme/assets/projects/hawk-tracking.jpg"/>
 <link rel="icon" type="image/png" href="assets/favicon-light.png"/>
 <link rel="icon" type="image/png" href="assets/favicon-dark.png" media="(prefers-color-scheme: dark)"/>
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png"/>
-<meta name="theme-color" content="#0a0a0f"/>
+<meta name="theme-color" content="#fefefe"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&family=VT323&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="css/style.css"/>
+<link rel="stylesheet" href="css/typesafe.css"/>
 </head>
 <body>
 
@@ -44,8 +45,15 @@
 
 <!-- HERO -->
 <section id="hero">
+  <div class="sky" aria-hidden="true"></div>
+  <div class="b64-strip" aria-hidden="true">SWRlYXMgdGhhdCBhcmUgZWFzeSB0byB0aGluayBvZiBhbmQgaGFyZCB0byBidWlsZC4=</div>
   <div class="hero-inner">
     <div class="hero-main">
+    <a class="news" href="#desk">
+      <span class="news-bar">Workbench · Now</span>
+      <span class="news-body">Turning old smartphones into robot brains</span>
+      <span class="news-link">Read now.md</span>
+    </a>
     <div class="hero-tag">
       <span class="dot"></span>
       Available for opportunities
@@ -55,7 +63,7 @@
       <span class="line2">Kumar.</span>
     </h1>
     <p class="hero-desc">
-      <span class="highlight">Founding Engineer @ DAITA.</span> IIT Patna CS grad.<br/>
+      <span class="highlight">Engineering @ Myrik.</span> Previously founding engineer at DAITA. IIT Patna CS grad.<br/>
       At work I build <span class="highlight2">0→1 products</span>, data systems and AI pipelines.<br/>
       Outside work I'm learning <span class="highlight3">robotics, simulation and reinforcement learning</span> by building small projects and seeing what breaks.
     </p>
@@ -85,7 +93,14 @@
     </div>
     </div>
 
-    <div class="hero-term" aria-label="What I'm working on next">
+  </div>
+
+  <div class="desk" id="desk">
+    <div class="desk-frame">
+      <span class="desk-label">RK.OS 1.1</span>
+      <div class="desk-b64" aria-hidden="true"><span>[b.64]</span>KHN0YXRlLCBldmVudCkgPT4gW25leHRTdGF0ZSwgZWZmZWN0c10=</div>
+      <div class="desk-grid">
+        <div class="hero-term" aria-label="What I'm working on next">
       <div class="term-bar">
         <span class="t-dot red"></span><span class="t-dot yellow"></span><span class="t-dot green"></span>
         <span class="term-title">rajneesh@workbench ~ zsh</span>
@@ -110,10 +125,23 @@
         <div class="t-row t-last"><span class="t-prompt">❯</span> <span class="t-cursor"></span></div>
       </div>
     </div>
-
-    <div class="pets">
-      <canvas id="pets" aria-label="My side projects as tiny animated pets. Click one to jump to it."></canvas>
+        <div class="desk-side">
+          <div class="win win-clock" aria-label="Current time in India">
+            <div class="win-bar">Clock Tool 1.1</div>
+            <div class="win-body">
+              <div class="clock-date" id="clock-date">&nbsp;</div>
+              <div class="clock-time" id="clock-time">--:--:--</div>
+              <div class="clock-zone">IST · UTC+5:30</div>
+            </div>
+          </div>
+          <div class="win win-pets pets">
+            <div class="win-bar">Pets 1.1 <span>side projects</span></div>
+            <div class="win-body"><canvas id="pets" aria-label="My side projects as tiny animated pets. Click one to jump to it."></canvas>
       <div class="pets-note">// my side projects, living down here. click one</div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -129,11 +157,45 @@
     </div>
     <div class="exp-grid">
 
+      <!-- Myrik -->
+      <div class="exp-item fade-in">
+        <div class="exp-meta">
+          <div class="exp-period">Jul 2026 — Present</div>
+          <span class="exp-type type-current">Current</span>
+          <span class="exp-type type-hire">Led #1 hire</span>
+        </div>
+        <div class="exp-content">
+          <div class="exp-role">Engineering</div>
+          <div class="exp-company">Myrik</div>
+          <p class="exp-sum"><b>Owning 0→1 ads.</b> Building Myrik's ad inventory from scratch and bringing other providers onto the platform.</p>
+          <div class="exp-fold"><div>
+          <ul class="exp-bullets">
+            <li class="exp-callout"><span class="exp-badge">#1 hire</span> <b>Led end-to-end hiring for our first brand partnerships role.</b> They work with brands on collaborations (ads and coupons) and bring their products onto Myrik, helping brands reach deep into tier-3 cities and giving people there more to choose from.</li>
+            <li>Building an ads platform where publishers (brands and small businesses) can show their content to a hyperlocal audience, targeted to one specific city.</li>
+            <li>Building a personalization engine that promotes products matching each user's behaviour, their searches on Myrik and their past purchases.</li>
+            <li>Worked on Vaani, a voice agent that lets people place orders on Myrik over a phone call, and on its evaluation, logging every conversation transcript for future use.</li>
+            <li>Added tenant scoping across the whole platform, from user login to end-to-end orders and inventory management, so the same software can be sold to other businesses that buy and sell in similar ways, such as agriculture and large equipment suppliers. This meant separating tenant context in the databases and async queue flows, and handling domain management per tenant.</li>
+            <li><span>Integrated <a href="https://www.pauket.com" target="_blank" rel="noopener">Pauket</a> with Myrik to show a coupon reward on the order confirmation screen, and to give a coupon as a reward for watching an ad.</span></li>
+            <li>Built our own in-house version of that reward flow for Myrik's existing consumer-goods brand partners. It now carries about 60% of the coupon-reward traffic.</li>
+          </ul>
+          <div class="exp-tags">
+            <span class="tag">0→1 Ads Platform</span>
+            <span class="tag">Hyperlocal Targeting</span>
+            <span class="tag">Personalization</span>
+            <span class="tag">Voice Agent</span>
+            <span class="tag">Multi-tenancy</span>
+            <span class="tag">Coupons &amp; Rewards</span>
+            <span class="tag">Hiring</span>
+          </div>
+          </div></div>
+        </div>
+      </div>
+
       <!-- DAITA -->
       <div class="exp-item fade-in">
         <div class="exp-meta">
-          <div class="exp-period">Oct 2025 — Present</div>
-          <span class="exp-type type-current">Current</span>
+          <div class="exp-period">Oct 2025 — Aug 2026</div>
+          <span class="exp-type type-past">Past</span>
         </div>
         <div class="exp-content">
           <div class="exp-role">Founding Engineer</div>
@@ -294,16 +356,16 @@
 
     <div class="range-bar fade-in" role="toolbar" aria-label="Filter projects">
       <button class="range-chip active" data-filter="all">Everything<span class="n"></span></button>
-      <button class="range-chip" data-filter="robotics">🛰 Robotics &amp; RL<span class="n"></span></button>
-      <button class="range-chip" data-filter="systems">⚙️ Systems &amp; infra<span class="n"></span></button>
-      <button class="range-chip" data-filter="ai">🧠 AI agents &amp; ML<span class="n"></span></button>
-      <button class="range-chip" data-filter="fun">🎲 Just for fun<span class="n"></span></button>
+      <button class="range-chip" data-filter="robotics">Robotics &amp; RL<span class="n"></span></button>
+      <button class="range-chip" data-filter="systems">Systems &amp; infra<span class="n"></span></button>
+      <button class="range-chip" data-filter="ai">AI agents &amp; ML<span class="n"></span></button>
+      <button class="range-chip" data-filter="fun">Just for fun<span class="n"></span></button>
     </div>
 
     <div class="exhibits">
 
       <!-- HAWK -->
-      <article class="exhibit fade-in" data-cat="robotics ai" data-bg="swarm" style="--ex: #06b6d4">
+      <article class="exhibit fade-in" data-cat="robotics" data-bg="swarm" style="--ex: #06b6d4">
         <div class="ex-media">
           <div class="ex-window">
             <div class="ex-chrome">
@@ -347,7 +409,7 @@
       </article>
 
       <!-- KINETIC -->
-      <article class="exhibit flip fade-in" data-cat="robotics systems" data-bg="flow" style="--ex: #ff8a5b">
+      <article class="exhibit flip fade-in" data-cat="robotics" data-bg="flow" style="--ex: #ff8a5b">
         <div class="ex-media">
           <div class="ex-window">
             <div class="ex-chrome">
@@ -395,7 +457,7 @@
       </article>
 
       <!-- ROCKET RALLY -->
-      <article class="exhibit fade-in" data-cat="robotics ai fun" data-bg="race" style="--ex: #ff4d5e">
+      <article class="exhibit fade-in" data-cat="robotics" data-bg="race" style="--ex: #ff4d5e">
         <div class="ex-media">
           <div class="ex-window">
             <div class="ex-chrome">
@@ -529,7 +591,7 @@
       </article>
 
       <!-- NEXT-FRAME -->
-      <article class="exhibit flip fade-in" data-cat="robotics ai" data-bg="grid" style="--ex: #38bdf8">
+      <article class="exhibit flip fade-in" data-cat="robotics" data-bg="grid" style="--ex: #38bdf8">
         <div class="ex-media">
           <div class="ex-window">
             <div class="ex-chrome">
@@ -575,7 +637,7 @@
 
     <div class="projects-grid">
 
-      <div class="project-card fade-in" data-cat="systems ai">
+      <div class="project-card fade-in" data-cat="systems">
         <div class="project-icon">🔭</div>
         <div class="project-label hackathon">Hackathon Winner · Meesho Hackme3</div>
         <div class="project-name">Observability Platform</div>
@@ -595,7 +657,7 @@
         </div>
       </div>
 
-      <div class="project-card fade-in" data-cat="fun ai">
+      <div class="project-card fade-in" data-cat="fun">
         <div class="project-icon">🖌️</div>
         <div class="project-label">Computer vision</div>
         <div class="project-name">Air Canvas</div>
@@ -605,7 +667,7 @@
         </div>
       </div>
 
-      <div class="project-card fade-in" data-cat="systems fun">
+      <div class="project-card fade-in" data-cat="systems">
         <div class="project-icon">🧩</div>
         <div class="project-label">Glorious failure</div>
         <div class="project-name">UI Engine Compiler</div>
@@ -625,7 +687,7 @@
         </div>
       </div>
 
-      <div class="project-card fade-in" data-cat="fun systems">
+      <div class="project-card fade-in" data-cat="fun">
         <div class="project-icon">✨</div>
         <div class="project-label">Just for fun</div>
         <div class="project-name">Fireflies in Elixir</div>
@@ -665,7 +727,7 @@
         </div>
       </div>
 
-      <div class="project-card fade-in" data-cat="ai fun">
+      <div class="project-card fade-in" data-cat="ai">
         <div class="project-icon">🤖</div>
         <div class="project-label">Where it started</div>
         <div class="project-name">Desktop Assistant</div>
@@ -728,6 +790,7 @@
       <div class="skill-group fade-in">
         <div class="skill-group-title">DevOps & Tools</div>
         <div class="skill-list">
+          <span class="skill-pill">AWS</span>
           <span class="skill-pill">Docker</span>
           <span class="skill-pill">ArgoCD</span>
           <span class="skill-pill">Prometheus</span>
@@ -891,5 +954,6 @@
 <script src="js/experience.js" defer></script>
 <script src="js/lab.js" defer></script>
 <script src="js/demos.js" defer></script>
+<script src="js/typesafe.js" defer></script>
 </body>
 </html>

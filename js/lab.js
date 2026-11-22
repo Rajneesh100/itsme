@@ -38,23 +38,36 @@ document.querySelectorAll('.ex-tab').forEach(btn => btn.addEventListener('click'
   counter.className = 'lab-counter';
   bar.appendChild(counter);
   let filter = 'all', slides = exhibits.slice(), stage = null, active = -1;
-  const cats = el => el.dataset.cat.split(' ');
-  const matches = el => filter === 'all' || cats(el).includes(filter);
-  // under a filter, projects that are mainly about that topic come first
-  const rank = el => filter === 'all' || cats(el)[0] === filter ? 0 : 1;
+  // each project sits in exactly one group, so the group counts add up to the total
+  const cat = el => el.dataset.cat;
+  const matches = el => filter === 'all' || cat(el) === filter;
+  // a group with no featured project gets a pointer to its smaller ones instead of an empty screen
+  const empty = document.createElement('div');
+  empty.className = 'ex-empty'; empty.hidden = true;
+  wrap.appendChild(empty);
+  empty.addEventListener('click', e => {
+    if (!e.target.closest('button')) return;
+    const head = container.querySelector('.sub-header');
+    scrollTo({ top: head.getBoundingClientRect().top + scrollY - 72, behavior: reduceMotion ? 'auto' : 'smooth' });
+  });
   const pad2 = n => String(n).padStart(2, '0');
   const cue = b => b.classList.toggle('more', stage !== null && b.scrollTop + b.clientHeight < b.scrollHeight - 4);
   exhibits.forEach(el => { const b = el.querySelector('.ex-body'); b.addEventListener('scroll', () => cue(b), { passive: true }); });
 
   chips.forEach(c => {
     const f = c.dataset.filter;
-    c.querySelector('.n').textContent = f === 'all' ? all.length : all.filter(el => cats(el).includes(f)).length;
+    c.querySelector('.n').textContent = f === 'all' ? all.length : all.filter(el => cat(el) === f).length;
   });
 
   function applyFilter() {
-    slides = exhibits.filter(matches).sort((a, b) => rank(a) - rank(b));
-    exhibits.forEach(el => { el.classList.toggle('is-hidden', !matches(el)); el.style.order = slides.indexOf(el); });
-    cards.forEach(el => { el.classList.toggle('is-hidden', !matches(el)); el.style.order = rank(el); });
+    slides = exhibits.filter(matches);
+    exhibits.forEach(el => el.classList.toggle('is-hidden', !matches(el)));
+    cards.forEach(el => el.classList.toggle('is-hidden', !matches(el)));
+    empty.hidden = slides.length > 0;
+    if (!empty.hidden) {
+      const n = cards.filter(matches).length;
+      empty.innerHTML = `<p>No big build in this group yet.</p><button type="button">See its ${n} smaller ${n === 1 ? 'project' : 'projects'} ↓</button>`;
+    }
     // the chips are pinned up with the projects, so say down here when they're hiding cards
     const shown = cards.filter(matches).length;
     note.hidden = shown === cards.length;
@@ -91,7 +104,7 @@ document.querySelectorAll('.ex-tab').forEach(btn => btn.addEventListener('click'
   function show(i) {
     active = i;
     exhibits.forEach(el => el.classList.toggle('on', el === slides[i]));
-    counter.textContent = slides.length ? `${pad2(i + 1)} / ${pad2(slides.length)}` : '';
+    counter.textContent = slides.length ? `${pad2(i + 1)} / ${pad2(slides.length)} featured` : '';
     exhibits.forEach(el => {
       const v = el.querySelector('video');
       if (!v) return;

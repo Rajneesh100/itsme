@@ -1502,3 +1502,25 @@ footer {
   .contact-links .primary { grid-column: 1 / -1; }
   footer { flex-direction: column; align-items: flex-start; justify-content: flex-start; text-align: left; }
 }
+
+/* After Hours: a group with no featured project */
+.ex-empty { text-align: center; padding: 40px 0; color: var(--dim); font-size: 15px; }
+.ex-empty[hidden] { display: none; }
+.ex-empty p { margin-bottom: 16px; }
+.ex-empty button { font-family: var(--font-mono); font-size: 12px; color: var(--text); background: transparent; border: 1px solid var(--border); padding: 8px 14px; cursor: pointer; }
+.ex-empty button:hover { border-color: var(--text); }
+.lab-stage .ex-empty { position: absolute; inset: 0; display: grid; place-content: center; padding: 0; }
+.lab-stage .ex-empty[hidden] { display: none; }
+
+/* Experience: a standout first-hire line */
+.type-hire { background: rgba(245,158,11,0.12); color: var(--warn); border: 1px solid rgba(245,158,11,0.35); margin-left: 6px; }
+.exp-bullets li.exp-callout { color: var(--text); padding: 12px 14px; border: 1px solid var(--border); background: var(--bg2); border-radius: 4px; }
+.exp-bullets li.exp-callout::before { display: none; }
+.exp-callout b { font-weight: 700; }
+.exp-badge { flex-shrink: 0; align-self: flex-start; font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 2px 7px; border-radius: 3px; background: var(--warn); color: #000; }
+.exp-bullets a { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
+
+/* Pinned Experience list: title and company share a line, so six roles fit on a laptop screen */
+.pinned .exp-content { display: flex; flex-wrap: wrap; align-items: baseline; column-gap: 10px; }
+.pinned .exp-company { margin-bottom: 0; }
+.pinned .exp-sum { flex-basis: 100%; margin-top: 2px; }

@@ -7,7 +7,7 @@ const World = (function () {
   const toggle = document.getElementById('world-toggle');
   const nav = document.querySelector('nav');
   const ctx = canvas.getContext('2d');
-  const BG = '#0a0a0f';
+  const BG = '#1e1e1e';   // matches the After Hours band
   let W = 0, H = 0, top = 68, raf = 0, last = 0, t = 0;
   let paused = reduceMotion;
   try { if (localStorage.getItem('world-paused') === '1') paused = true; } catch (e) {}
@@ -449,7 +449,7 @@ const World = (function () {
     const k = dt / 16.67;
     // most scenes clear fully each frame (crisp at any frame rate); a scene with `fade` keeps a glow trail,
     // and the fade is scaled by elapsed time so the trail is the same length at 30, 60 or 120 fps
-    if (cur.fade) { ctx.fillStyle = `rgba(10,10,15,${1 - Math.pow(1 - cur.fade, k)})`; ctx.fillRect(0, 0, W, H); } else clear();
+    if (cur.fade) { ctx.fillStyle = `rgba(30,30,30,${1 - Math.pow(1 - cur.fade, k)})`; ctx.fillRect(0, 0, W, H); } else clear();
     cur.step(k, dt); cur.draw();
     raf = requestAnimationFrame(frame);
   }
