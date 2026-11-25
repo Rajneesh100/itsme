@@ -402,7 +402,7 @@ section { padding: 96px 40px; }
   font: 500 clamp(44px, 6vw, 92px)/0.92 var(--sans);
   letter-spacing: -0.05em;
   color: var(--ink2);
-  text-transform: capitalize;
+  text-transform: none;
 }
 .section-line { display: none; }
 
@@ -724,7 +724,7 @@ section { padding: 96px 40px; }
 .edu-pill { border-radius: 0; border: 1px solid var(--ink); color: var(--ink); font: 400 12px/1 'JetBrains Mono', monospace; padding: 6px 9px; }
 .edu-pill.cpi { background: var(--ink); color: var(--paper); border-color: var(--ink); }
 
-.vol-list { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; max-width: none; }
+.vol-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; max-width: 980px; margin: 0 auto; }
 .vol-item { background: none; border: 0; border-left: 1px solid var(--ink); border-radius: 0; padding: 2px 0 2px 16px; }
 .vol-item::before { display: none; }
 .vol-text { font-size: 16px; line-height: 1.5; color: var(--ink2); }

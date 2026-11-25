@@ -1529,3 +1529,6 @@ footer {
 a.stat-link { color: inherit; text-decoration: none; }
 a.stat-link .stat-label { text-decoration: underline; text-underline-offset: 3px; }
 a.stat-link:hover .stat-num, a.stat-link:hover .stat-label { color: var(--accent); }
+
+/* Pinned Experience list: other roles keep a one-line summary so seven roles fit */
+.pinned .exp-item:not(.on) .exp-sum { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 1; line-clamp: 1; overflow: hidden; }
