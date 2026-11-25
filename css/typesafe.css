@@ -838,3 +838,16 @@ footer span[style] { color: var(--ink) !important; font-family: 'JetBrains Mono'
 a.stat-link .stat-label { color: var(--ink); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
 a.stat-link:hover .stat-num, a.stat-link:hover .stat-label { color: var(--magenta); }
 a.stat-link:focus-visible { outline: 2px solid var(--magenta); outline-offset: 4px; }
+
+
+/* ─── Hero name: Bricolage Grotesque, drawn by the drone swarm (js/swarm.js) ─── */
+.hero-name {
+  position: relative;
+  font-family: 'Bricolage Grotesque', 'Inter Tight', 'Helvetica Neue', Arial, sans-serif;
+  font-weight: 800;
+  font-optical-sizing: auto;
+  letter-spacing: -0.045em;
+}
+.swarm-pending .hero-name span,
+.swarm-on .hero-name span { color: transparent; }
+.hero-name canvas.swarm { position: absolute; pointer-events: none; }

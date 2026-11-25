@@ -13,9 +13,11 @@
 <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png?v=2"/>
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png?v=2"/>
 <meta name="theme-color" content="#fefefe"/>
+<script>/* hero swarm: hide the solid name before first paint; js/swarm.js draws it as dots. Falls back to the text after 3 s. */
+try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches&&window.ResizeObserver){var d=document.documentElement;d.classList.add('swarm-pending');setTimeout(function(){d.classList.remove('swarm-pending')},3000)}}catch(e){}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&family=VT323&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,800&family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&family=VT323&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="css/style.css"/>
 <link rel="stylesheet" href="css/typesafe.css"/>
 </head>
@@ -979,5 +981,6 @@
 <script src="js/lab.js" defer></script>
 <script src="js/demos.js" defer></script>
 <script src="js/typesafe.js" defer></script>
+<script src="js/swarm.js" defer></script>
 </body>
 </html>
