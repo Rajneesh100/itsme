@@ -833,3 +833,8 @@ footer span[style] { color: var(--ink) !important; font-family: 'JetBrains Mono'
 .exp-bullets li.exp-callout { display: block; color: var(--ink); background: rgba(243,134,161,0.22); border: 1px solid var(--ink); border-left: 4px solid var(--ink); border-radius: 0; padding: 12px 14px 13px; }
 .exp-callout b { font-weight: 600; }
 .exp-badge { display: inline-block; margin-right: 6px; background: var(--ink); color: var(--paper); border-radius: 0; font: 17px/1 var(--pixel); letter-spacing: 0; text-transform: none; padding: 2px 6px; vertical-align: 1px; }
+
+/* Hero: the LeetCode stat links to the profile */
+a.stat-link .stat-label { color: var(--ink); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+a.stat-link:hover .stat-num, a.stat-link:hover .stat-label { color: var(--magenta); }
+a.stat-link:focus-visible { outline: 2px solid var(--magenta); outline-offset: 4px; }
